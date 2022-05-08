@@ -23,11 +23,13 @@
   },
   "homepage": "https://github.com/HalloSouf/DiscordJS-MySQL#readme",
   "dependencies": {
+    "@prisma/client": "^3.13.0",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "prisma": "^3.13.0"
   }
 }
