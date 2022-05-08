@@ -1,10 +1,11 @@
 {
   "name": "discordjs-mysql",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "An example how to use MySQL in your Discord bot",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,11 @@
   },
   "homepage": "https://github.com/HalloSouf/DiscordJS-MySQL#readme",
   "dependencies": {
-    "discord.js": "^12.2.0",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
