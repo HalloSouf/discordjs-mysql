@@ -44,7 +44,10 @@ client.on('message', message => {
         let command = args.shift().toLowerCase();
 
         if (!message.content.startsWith(prefix)) return;
-        if (message.guild && !message.member) await message.guild.fetch.members(message.author);
+        client.on('message', async (message) => {
+            if (message.guild && !message.member) await message.guild.members.fetch(message.author);
+        });
+        
 
         let member = message.guild.member(message.mentions.users.first() || args[0]);
 
@@ -65,17 +68,18 @@ client.on('message', message => {
                 break;
 
             case 'settings':
-                // New prfix
+                // New prefix
                 let newPrefix = args[0];
-                if (!newPrefix) return message.channel.send(`Maybe you have forget to enter a new prefix!`);
-                
-                // Using the UPDATE query
-                con.query(`UPDATE settings SET setting = '${newPrefix}' WHERE setting = 'prefix'`, (err, row) => {
+                if (!newPrefix) return message.channel.send(`Maybe you have forgotten to enter a new prefix!`);
+
+                // Using the UPDATE query with parameterized query
+                con.query('UPDATE settings SET setting = ? WHERE setting = ?', [newPrefix, 'prefix'], (err, result) => {
                     // Return if there is an error
                     if (err) return console.log(err);
-
                     message.channel.send(`The prefix has been updated!`);
                 });
+                break;
+
 
         }
 
